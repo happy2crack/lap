@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn Android Programming</title>
+<link href="jquery.mobile-1.0b3/jquery.mobile-1.0b3.min.css" rel="stylesheet" type="text/css">
+<script src="jquery.mobile-1.0b3/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).bind("mobileinit", function() { 
+		$.mobile.page.prototype.options.addBackBtn = true; 
+	}); 
+</script>
+<script src="jquery.mobile-1.0b3/jquery.mobile-1.0b3.min.js" type="text/javascript"></script>
+<link href="styles/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div data-role="page" id="page" data-theme="b">
+  <div data-role="header" data-theme="b"><a href="#page" data-role="button" data-icon="back" data-rel="back">Back</a>
+  <h1>Android Development Framework Overview</h1> 
+  </div>
+<div data-role="content">
+<ul>
+	<li>Android applications are normally written in Java and executed by custom VM called Dalvik VM.</li>
+	<li>The <span style="color: #0060bf;">Android software stack </span> is, a Linux kernel and a collection of C/C++ libraries
+exposed through an application framework that provides services for, and management of, the run 
+time and applications. </li>
+
+<br> Figure below depicts <span style="color: #0060bf;"> Android Application framework </span>. 
+The Applications section is where a developer's application sits.<br>
+<br><img src="Android_Architecture.gif" alt="Android Architecture" style="width:80%; height:20%">
+<br>
+	<li><strong>Linux 2.6 Kernel</strong>: Android is created on top of Linux 2.6 Kernel. Linux kernel core features include Security Model (handling of communication between application and System), Memory Management, Process Management, Network communication, Driver Support etc.
+</li>
+	<li><strong>Android framework</strong>: On the top the Linux 2.6 kernel, the Android framework is developed which consists of Android Run Time and Libraries.
+	<ul>
+	<li><strong>Android runtime</strong>: The Android runtime is composed of Java core libraries and Dalvik virtual machine (DVM). <br>Dalvik is a register based Virtual Machine that's been optimized to ensure that a device can run multiple instances efficiently.</li>
+	<li><strong>Libraries</strong>: Android includes various C/C++ core libraries such as:
+	<br>Open GL : This is graphics library actually a cross-language, cross-platform API used to produce 2D and 3D computer graphics.
+	<br>WebKit: Open source web browser engine provides the functionality to display web content and to simplify page loading. 
+	<br>SQLite: Open source relational database engine designed to be embedded in devices. 
+	<br>Media Library: To play and record audio and video. 
+	<br>Secure Sockets Layer (SSL): These libraries are responsible for Internet security.</li>
+	</ul>
+</li>
+
+<li><strong>Application Framework</strong>: The application framework provides the classes used to create
+Android applications. You benefit from these features because you don’t have to build any of the functionality they provide. Some of them are:
+<br>Activity manager: Manages the activity life cycle. 
+<br>Telephony manager: Provides access to telephony services as well as to certain subscriber information, such as phone numbers. 
+<br>View system: Handles the views and layouts that make up your user interface (UI). 
+<br>Location manager: Finds the device’s geographic location.</li>
+
+<li><strong>Application Layer</strong>: Native and third-party applivations are built on the application 
+	layer by means of the same API libraries. The application layer runs within the Android run 
+	time, using the classes and services made available from the application framework.
+</li>
+<li>From kernel to application, the Android operating system has been developed with proven open source technologies. A developer, can therefore build rich applications that have been fostered in the open source community.
+</ul>
+</div>
+</body>
+</html>
