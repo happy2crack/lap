@@ -64,18 +64,18 @@ Below is the example of a Manifest file:
         &lt/activity&gt
         &ltactivity
             android:name=".DetailActivity"
-            android:label="@string/activity_detail_label" &gt
-		&lt/activity&gt
+            android:label="@string/activity_detail_label" /&gt
+			
 			
 		&ltreceiver
-            android:name="com.google.android.gcm.GCMBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND" &gt
-            &ltintent-filter&gt 
-                &ltaction android:name="com.google.android.c2dm.intent.RECEIVE" /&gt
-                &ltaction android:name="com.google.android.c2dm.intent.REGISTRATION" /&gt 
-                &ltcategory android:name="com.test.demoapplication" /&gt
-            &lt/intent-filter&gt
-        &lt/receiver&gt
+			android:name="com.google.android.gcm.GCMBroadcastReceiver"
+			android:permission="com.google.android.c2dm.permission.SEND" &gt
+			&ltintent-filter&gt
+				&ltaction android:name="com.google.android.c2dm.intent.RECEIVE" /&gt
+				&ltaction android:name="com.google.android.c2dm.intent.REGISTRATION" /&gt
+				&ltcategory android:name="com.test.demoapplication" /&gt
+			&lt/intent-filter&gt
+		&lt/receiver&gt
  
         &ltservice android:name="com.test.demoapplication.GCMIntentService" /&gt         	
    
