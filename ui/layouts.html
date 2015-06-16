@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn Android Programming</title>
+<link href="jquery.mobile-1.0b3/jquery.mobile-1.0b3.min.css" rel="stylesheet" type="text/css">
+<script src="jquery.mobile-1.0b3/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).bind("mobileinit", function() { 
+		$.mobile.page.prototype.options.addBackBtn = true; 
+	}); 
+</script>
+<script src="jquery.mobile-1.0b3/jquery.mobile-1.0b3.min.js" type="text/javascript"></script>
+<link href="styles/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div data-role="page" id="page" data-theme="b">
+  <div data-role="header" data-theme="b"><a href="#page" data-role="button" data-icon="back" data-rel="back">Back</a>
+  <h1>UI Layouts</h1> 
+  </div>
+<div data-role="content">
+<strong><span style="color: #0060bf;">Definition: Layout</span></strong>
+
+
+<ul>
+	<li>A layout defines the visual structure for a user interface, such as the UI for an activity or app widget. </li>
+	<li>You can declare a layout in two ways: Declare UI elements in XML or Instantiate layout elements at runtime i.e.programmatically.</li>
+	<li>The advantage to declaring your UI in XML is that it enables you to better separate the presentation of your application from the code that controls its behavior.</li>
+</ul>
+
+<strong><span style="color: #0060bf;">XML Layout: </span></strong>
+
+
+<ul>
+	<li>Each layout file must contain exactly one root element, which must be a View or ViewGroup object. </li>
+	<li>Once you've defined the root element, you can add additional layout objects or widgets as child elements to gradually build a View hierarchy that defines your layout. </li>
+	<li>Below is an example of XML layout which has vertical LinearLayout containing a TextView and an EditText:
+	<pre>
+		&lt?xml version="1.0" encoding="utf-8"?&gt
+		&ltLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					  android:layout_width="match_parent"
+					  android:layout_height="match_parent"
+					  android:orientation="vertical" &gt
+			&ltTextView android:id="@+id/sampleTextView"
+					  android:layout_width="wrap_content"
+					  android:layout_height="wrap_content"
+					  android:text="@string/label_textView" /&gt
+			&ltEditText android:id="@+id/sampleEditText"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/label_editText" /&gt
+		&lt/LinearLayout&gt
+	</pre>		
+	</li>
+	<li>This xml file should be saved with .xml extension, in your Android App project's res/layout/ directory, for proper compilation.</li>
+</ul>
+
+
+
+<strong><span style="color: #0060bf;">Loading XML in Code:</span></strong>
+<ul>
+<li>When you compile your application, each XML layout file is compiled into a View resource. </li>
+<li>This is generally done by calling setContentView() inside activity's onCreate() method.
+<pre>
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+}
+</pre>
+</li>
+</ul>
+
+
+<strong><span style="color: #0060bf;">View Attributes:</span></strong>
+
+<ul>
+	<li>Every View and ViewGroup object supports their own variety of XML attributes. </li>
+	<li>ID: Any View object may have an integer ID associated with it, to uniquely identify the View within the tree.</li>
+	<li>The syntax for an ID, inside an XML tag is: android:id="@+id/sampleTextView" </li>
+	<li>When referencing an Android resource ID, you do not need the plus-symbol, but must add the android package namespace, like so: android:id="@android:id/list"</li>
+	<li>In order to create views and reference them from the application, a common pattern is to Define a view/widget in the layout file and assign it a unique ID:
+	<pre>
+			&ltTextView android:id="@+id/sampleTextView"
+					  android:layout_width="wrap_content"
+					  android:layout_height="wrap_content"
+					  android:text="@string/label_textView" /&gt
+	</pre>		  
+	</li>
+	
+	<li>Then create an instance of the view object and capture it from the layout (typically in the onCreate() method): TextView tv = (TextView) findViewById(R.id.sampleTextView);</li>
+</ul>
+
+<strong><span style="color: #0060bf;">Layout Parameters:</span></strong>
+<ul>
+	<li>Every ViewGroup class implements a nested class that extends ViewGroup.LayoutParams. </li>
+	<li>This subclass contains property types that define the size and position for each child view, as appropriate for the view group.</li>
+	<li>Figure below is Visualization of a view hierarchy with layout parameters associated with each view.</li>
+	<br>
+	<br><img src="view_layoutparams.jpg" alt="View Hierarchy" style="width:80%; height:20%">
+	<br>
+	<li>All view groups include a width and height (layout_width and layout_height), and each view is required to define them.</li>
+</ul>
+
+
+<strong><span style="color: #0060bf;">Size, Padding and Margins:</span></strong>
+<ul>
+	<li>The size of a view is expressed with a width and a height. </li>
+	<li>To measure its dimensions, a view takes into account its padding. The padding is expressed in pixels for the left, top, right and bottom parts of the view.</li>
+	<li>Even though a view can define a padding, it does not provide any support for margins. However, view groups provide such a support.</li>
+</ul>
+
+<strong><span style="color: #0060bf;">Commonly used Layouts:</span></strong>
+<ul>
+	<li>Below are some of the more common layout types that are built into the Android platform.</li>
+	<li>Linear Layout: A layout that organizes its children into a single horizontal or vertical row. It creates a scrollbar if the length of the window exceeds the length of the screen.</li>
+	<li>Relative Layout: Enables you to specify the location of child objects relative to each other (child A to the left of child B) or to the parent (aligned to the top of the parent).</li>
+	<li>Web View: Displays web pages.</li>
+</ul>
+
+
+<strong><span style="color: #0060bf;">Using Adapter:</span></strong>
+
+<ul>
+	<li>When the content for your layout is dynamic or not pre-determined, you can use a layout that subclasses AdapterView to populate the layout with views at runtime. </li>
+	<li>Common layouts backed by an adapter include List View and Grid View.</li>
+	<li>List View: Displays a scrolling single column list.</li>
+	<li>Grid View: Displays a scrolling grid of columns and rows.</li>
+	<li>You can populate an AdapterView by binding the AdapterView instance to an Adapter, which retrieves data from an external source and creates a View that represents each data entry.</li>
+	<li>For example, if you have an array of strings you want to display in a ListView, initialize a new ArrayAdapter using a constructor to specify the layout for each string and the string array:
+	<pre>
+	    ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
+            android.R.layout.simple_list_item_1, stringArray);
+	</pre>
+	</li>
+	<li>
+	Then call setAdapter() on ListView:
+	<pre>
+		ListView lv = (ListView) findViewById(R.id.myListview);
+		lv.setAdapter(listAdapter);
+	</pre>
+	</li>
+</ul>
+
+<strong><span style="color: #0060bf;">Handling click events for AdapterView:</span></strong>
+
+<ul>
+	<li>You can respond to click events on each item in an AdapterView by implementing the AdapterView.OnItemClickListener interface. 
+	<pre>
+	For example:
+		private OnItemClickListener customHandler = new OnItemClickListener() {
+			public void onItemClick(AdapterView parent, View v, int position, long id) {
+				// Action on Click
+			}
+		};
+
+		listView.setOnItemClickListener(customHandler);
+	</pre>	
+	</li>
+</ul>
+
+<strong><span style="color: #0060bf;">Note:</span></strong>
+Portions of this page are modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License.
+For more information, <a class="ulink" href="http://developer.android.com/guide/topics/ui/declaring-layout.html" target="_blank">click here</a> to original source page.
+</div>
+</body>
+</html>
